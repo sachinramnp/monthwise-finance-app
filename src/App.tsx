@@ -213,7 +213,15 @@ function App() {
   const [day, setDay] = useState(
     () => getStored('monthwise.day', INITIAL_DAY),
   );
-
+  const setStored = (key: string, value: unknown): boolean => {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch {
+    return false;
+  }
+};
+  
   const [tab, setTab] = useState<Tab>('overview');
   const [simAmount, setSimAmount] = useState('450');
   const [simCategory, setSimCategory] = useState<Category>('Shopping');
